@@ -56,7 +56,7 @@ class InvertedResidual(Module):
 		)
 
 		if use_se:
-			squeeze_channels = self._make_divisible(expanded_channels // 4, 8)
+			squeeze_channels = _make_divisible(expanded_channels // 4, 8)
 			self.se = SqueezeExcitation(expanded_channels, squeeze_channels)
 		else:
 			self.se = Identity()

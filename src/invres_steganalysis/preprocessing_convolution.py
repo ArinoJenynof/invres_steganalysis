@@ -261,7 +261,7 @@ class PreProcessingConv2d(torch.nn.Module):
 			torch.nn.init.uniform_(self.biases_5x5, -bound, bound)
 	
 	def forward(self, x: torch.Tensor) -> torch.Tensor:
-		out1 = torch.nn.functional.conv2d(x, self.weights_3x3, self.biases_3x3)
-		out2 = torch.nn.functional.conv2d(x, self.weights_5x5, self.biases_5x5)
+		out1 = torch.nn.functional.conv2d(x, self.weights_3x3, self.biases_3x3, 1, 1)
+		out2 = torch.nn.functional.conv2d(x, self.weights_5x5, self.biases_5x5, 1, 2)
 		return torch.cat([out1, out2], 1)
 	
