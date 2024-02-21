@@ -9,6 +9,10 @@ readme = "README.md"
 version = "0.0.1"
 dependencies = [
 	"lightning",
-	"torchvision"
+	"torchvision",
+	"scikit-learn"
 ]
-requires-python = ">= 3.8"
+requires-python = ">= 3.11"
+
+[project.scripts]
+invres = "invres_steganalysis:main_cli"
