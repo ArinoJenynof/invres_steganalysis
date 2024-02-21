@@ -40,12 +40,14 @@ class SteganalysisDataset(VisionDataset):
 			class_idx = self.class_to_idx[class_name]
 			class_path = Path(root) / class_name
 			self.samples += [(x.resolve(), class_idx) for x in class_path.iterdir()]
+		self.targets = [s[1] for s in self.samples]
 	
 	def __getitem__(self, index: int):
 		path, target = self.samples[index]
 		
 		with open(path, "rb") as f:
 			sample = Image.open(f)
+			sample.load()
 		
 		if self.transform is not None:
 			sample = self.transform(sample)
