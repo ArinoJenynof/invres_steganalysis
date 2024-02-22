@@ -70,7 +70,7 @@ def main_cli():
 	valid_dataloader = torch.utils.data.DataLoader(bossbase_valid, 16, False, num_workers=2, persistent_workers=True)
 	test_dataloader = torch.utils.data.DataLoader(bossbase_test, 16, False, num_workers=2, persistent_workers=True)
 	
-	trainer = L.Trainer(limit_train_batches=100, max_epochs=10)
+	trainer = L.Trainer()
 	trainer.fit(model, train_dataloaders=train_dataloader, val_dataloaders=valid_dataloader)
 	trainer.test(model, test_dataloader)
 
